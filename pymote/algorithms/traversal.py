@@ -22,14 +22,14 @@ class DF(NodeAlgorithm):
         self.visit(node, message)
 
     def idle(self, node, message):
-        if message.header == 'T':
+        if message.header == 'Token':
             node.memory['entry'] = message.source
             node.memory['unvisitedNodes'] = list(node.memory[self.neighborsKey])
             node.memory['unvisitedNodes'].remove(message.source)
             self.visit(node, message)
 
     def visited(self, node, message):
-        if message.header == 'T':
+        if message.header == 'Token':
             node.memory['unvisitedNodes'].remove(message.source)
             node.send(Message(destination=message.source, header='Backedge', data=message.data))
         elif message.header == 'Return' or message.header == 'Backedge':
@@ -41,7 +41,7 @@ class DF(NodeAlgorithm):
     def visit(self, node, message):
         if node.memory['unvisitedNodes']:
             next_node = node.memory['unvisitedNodes'].pop()
-            node.send(Message(destination=next_node, header='T', data=message.data))
+            node.send(Message(destination=next_node, header='Token', data=message.data))
             node.status = 'VISITED'
         else:
             if 'entry' in node.memory:
