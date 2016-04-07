@@ -2,9 +2,9 @@ from pymote.algorithm import NodeAlgorithm
 from pymote.message import Message
 
 
-class DFT(NodeAlgorithm):
+class DF(NodeAlgorithm):
     # algorithm input
-    required_params = {'informationKey', }
+    required_params = ()
     # values that are exposed to other algorithms
     default_params = {'neighborsKey': 'Neighbors'}
 
@@ -12,9 +12,8 @@ class DFT(NodeAlgorithm):
         for node in self.network.nodes():
             node.memory[self.neighborsKey] = node.compositeSensor.read()['Neighbors']
             node.status = 'IDLE'
-            if self.informationKey in node.memory:
-                ini_node = node
-        # if multiple initiators are specified only the last one is initialized
+        # make first node initiator
+        ini_node = self.network.nodes()[0]
         ini_node.status = 'INITIATOR'
         self.network.outbox.insert(0, Message(header=NodeAlgorithm.INI, destination=ini_node))
 
@@ -33,11 +32,7 @@ class DFT(NodeAlgorithm):
         if message.header == 'T':
             node.memory['unvisitedNodes'].remove(message.source)
             node.send(Message(destination=message.source, header='Backedge', data=message.data))
-        elif message.header == 'Return':
-            node.memory['unvisitedNodes'].remove(message.source)
-            self.visit(node, message)
-        elif message.header == 'Backedge':
-            node.memory['unvisitedNodes'].remove(message.source)
+        elif message.header == 'Return' or message.header == 'Backedge':
             self.visit(node, message)
 
     def done(self, node, message):
@@ -45,7 +40,7 @@ class DFT(NodeAlgorithm):
 
     def visit(self, node, message):
         if node.memory['unvisitedNodes']:
-            next_node = node.memory['unvisitedNodes'][0]
+            next_node = node.memory['unvisitedNodes'].pop()
             node.send(Message(destination=next_node, header='T', data=message.data))
             node.status = 'VISITED'
         else:
