@@ -56,6 +56,93 @@ class DF(NodeAlgorithm):
              }
 
 
+class DFp(NodeAlgorithm):
+    # algorithm input
+    required_params = ()
+    # values that are exposed to other algorithms
+    default_params = {'neighborsKey': 'Neighbors'}
+
+    def initializer(self):
+        for node in self.network.nodes():
+            node.memory[self.neighborsKey] = node.compositeSensor.read()['Neighbors']
+            node.status = 'IDLE'
+        # make first node initiator
+        ini_node = self.network.nodes()[0]
+        ini_node.status = 'INITIATOR'
+        self.network.outbox.insert(0, Message(header=NodeAlgorithm.INI, destination=ini_node))
+
+    def initiator(self, node, message):
+        node.memory['unvisited_nodes'] = list(node.memory[self.neighborsKey])
+        node.memory['unacked_nodes'] = list(node.memory[self.neighborsKey])
+        node.send(Message(header='Visited', data=message.data))
+        node.status = 'VISITED'
+
+    def idle(self, node, message):
+        if message.header == 'Visited':
+            node.memory['unvisited_nodes'] = list(node.memory[self.neighborsKey])
+            node.memory['unacked_nodes'] = list(node.memory[self.neighborsKey])
+            node.send(Message(destination=message.source, header='Ack', data=message.data))
+            node.status = 'AVAILABLE'
+
+    def available(self, node, message):
+        if message.header == 'Token':
+            node.memory['entry'] = message.source
+            node.memory['unacked_nodes'].remove(message.source)
+            node.memory['unvisited_nodes'].remove(message.source)
+            if node.memory['unvisited_nodes']:
+                for i in list(node.memory['unacked_nodes']):
+                    node.send(Message(destination=i, header='Visited', data=message.data))
+                node.status = 'VISITED'
+            else:
+                node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
+                node.status = 'DONE'
+        elif message.header == 'Visited':
+            node.send(Message(destination=message.source, header='Ack', data=message.data))
+            node.status = 'AVAILABLE'
+
+    def visited(self, node, message):
+        if message.header == 'Ack':
+            node.memory['unacked_nodes'].remove(message.source)
+            if not node.memory['unacked_nodes']:
+                next_node = node.memory['unvisited_nodes'].pop()
+                node.send(Message(destination=next_node, header='Token', data=message.data))
+        elif message.header == 'NAck':
+            node.memory['unacked_nodes'].remove(message.source)
+            node.memory['unvisited_nodes'].remove(message.source)
+            if not node.memory['unacked_nodes']:
+                if node.memory['unvisited_nodes']:
+                    next_node = node.memory['unvisited_nodes'].pop()
+                    node.send(Message(destination=next_node, header='Token', data=message.data))
+                else:
+                    node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
+                    node.status = 'DONE'
+        elif message.header == 'Return':
+            if node.memory['unvisited_nodes']:
+                next_node = node.memory['unvisited_nodes'].pop()
+                node.send(Message(destination=next_node, header='Token', data=message.data))
+            else:
+                node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
+                node.status = 'DONE'
+        elif message.header == 'Visited':
+            node.send(Message(destination=message.source, header='NAck', data=message.data))
+
+    def done(self, node, message):
+        if message.header == 'Token':
+            node.send(Message(destination=message.source, header='Return', data=message.data))
+
+    STATUS = {
+        'INITIATOR': initiator,
+        'IDLE': idle,
+        'AVAILABLE': available,
+        'VISITED': visited,
+        'DONE': done
+    }
+
+
+class DFpp(NodeAlgorithm):
+    pass
+
+
 class DFStar(NodeAlgorithm):
     # algorithm input
     required_params = ()
