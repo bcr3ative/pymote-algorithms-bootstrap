@@ -140,7 +140,72 @@ class DFp(NodeAlgorithm):
 
 
 class DFpp(NodeAlgorithm):
-    pass
+    # algorithm input
+    required_params = ()
+    # values that are exposed to other algorithms
+    default_params = {'neighborsKey': 'Neighbors'}
+
+    def initializer(self):
+        for node in self.network.nodes():
+            node.memory[self.neighborsKey] = node.compositeSensor.read()['Neighbors']
+            node.status = 'IDLE'
+        # make first node initiator
+        ini_node = self.network.nodes()[0]
+        ini_node.status = 'INITIATOR'
+        self.network.outbox.insert(0, Message(header=NodeAlgorithm.INI, destination=ini_node))
+
+    def initiator(self, node, message):
+        node.memory['unvisited_nodes'] = list(node.memory[self.neighborsKey])
+        node.send(Message(header='Visited', data=message.data))
+        next_node = node.memory['unvisited_nodes'].pop()
+        node.send(Message(destination=next_node, header='Token', data=message.data))
+        node.status = 'VISITED'
+
+    def idle(self, node, message):
+        if message.header == 'Visited':
+            node.memory['unvisited_nodes'] = list(node.memory[self.neighborsKey])
+            node.memory['unvisited_nodes'].remove(message.source)
+            node.status = 'AVAILABLE'
+
+    def available(self, node, message):
+        if message.header == 'Token':
+            node.memory['entry'] = message.source
+            for i in list(node.memory[self.neighborsKey]):
+                if i is not message.source:
+                    node.send(Message(destination=i, header='Visited', data=message.data))
+            if node.memory['unvisited_nodes']:
+                next_node = node.memory['unvisited_nodes'].pop()
+                node.send(Message(destination=next_node, header='Token', data=message.data))
+                node.status = 'VISITED'
+            else:
+                node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
+                node.status = 'DONE'
+        elif message.header == 'Visited':
+            node.memory['unvisited_nodes'].remove(message.source)
+
+    def visited(self, node, message):
+        if message.header == 'Visited':
+            node.memory['unvisited_nodes'].remove(message.source)
+        elif message.header == 'Return':
+            if node.memory['unvisited_nodes']:
+                next_node = node.memory['unvisited_nodes'].pop()
+                node.send(Message(destination=next_node, header='Token', data=message.data))
+                node.status = 'VISITED'
+            else:
+                if 'entry' in node.memory:
+                    node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
+                node.status = 'DONE'
+
+    def done(self, node, message):
+        pass
+
+    STATUS = {
+        'INITIATOR': initiator,
+        'IDLE': idle,
+        'AVAILABLE': available,
+        'VISITED': visited,
+        'DONE': done
+    }
 
 
 class DFStar(NodeAlgorithm):
