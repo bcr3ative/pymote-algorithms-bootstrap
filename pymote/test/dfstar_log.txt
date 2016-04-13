@@ -1,0 +1,402 @@
+test_line (__main__.DFTestRunner) ... WARNING [__init__.py]: Environment variable PYMOTE_SETTINGS_MODULE is undefined, using global_settings.
+DEBUG   [simulation.py]: Simulation 0x7fd3e1ee6b48 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_unique1 (__main__.DFTestRunner) ... DEBUG   [simulation.py]: Simulation 0x7fd3e1e867a0 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Step 23 finished
+DEBUG   [simulation.py]: [DFStar] Step 24 finished
+DEBUG   [simulation.py]: [DFStar] Step 25 finished
+DEBUG   [simulation.py]: [DFStar] Step 26 finished
+DEBUG   [simulation.py]: [DFStar] Step 27 finished
+DEBUG   [simulation.py]: [DFStar] Step 28 finished
+DEBUG   [simulation.py]: [DFStar] Step 29 finished
+DEBUG   [simulation.py]: [DFStar] Step 30 finished
+DEBUG   [simulation.py]: [DFStar] Step 31 finished
+DEBUG   [simulation.py]: [DFStar] Step 32 finished
+DEBUG   [simulation.py]: [DFStar] Step 33 finished
+DEBUG   [simulation.py]: [DFStar] Step 34 finished
+DEBUG   [simulation.py]: [DFStar] Step 35 finished
+DEBUG   [simulation.py]: [DFStar] Step 36 finished
+DEBUG   [simulation.py]: [DFStar] Step 37 finished
+DEBUG   [simulation.py]: [DFStar] Step 38 finished
+DEBUG   [simulation.py]: [DFStar] Step 39 finished
+DEBUG   [simulation.py]: [DFStar] Step 40 finished
+DEBUG   [simulation.py]: [DFStar] Step 41 finished
+DEBUG   [simulation.py]: [DFStar] Step 42 finished
+DEBUG   [simulation.py]: [DFStar] Step 43 finished
+DEBUG   [simulation.py]: [DFStar] Step 44 finished
+DEBUG   [simulation.py]: [DFStar] Step 45 finished
+DEBUG   [simulation.py]: [DFStar] Step 46 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_unique2 (__main__.DFTestRunner) ... /home/paolo/Documents/BMO/pymote_env/src/pymote/pymote/environment.py:95: RuntimeWarning: invalid value encountered in divide
+  incrE = (x1 - x0) / d  # incrE is cos in direction of x axis
+/home/paolo/Documents/BMO/pymote_env/src/pymote/pymote/environment.py:96: RuntimeWarning: invalid value encountered in divide
+  incrN = (y1 - y0) / d  # incrN is sin in direction of y axis
+DEBUG   [simulation.py]: Simulation 0x7fd3e1e91d40 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Step 23 finished
+DEBUG   [simulation.py]: [DFStar] Step 24 finished
+DEBUG   [simulation.py]: [DFStar] Step 25 finished
+DEBUG   [simulation.py]: [DFStar] Step 26 finished
+DEBUG   [simulation.py]: [DFStar] Step 27 finished
+DEBUG   [simulation.py]: [DFStar] Step 28 finished
+DEBUG   [simulation.py]: [DFStar] Step 29 finished
+DEBUG   [simulation.py]: [DFStar] Step 30 finished
+DEBUG   [simulation.py]: [DFStar] Step 31 finished
+DEBUG   [simulation.py]: [DFStar] Step 32 finished
+DEBUG   [simulation.py]: [DFStar] Step 33 finished
+DEBUG   [simulation.py]: [DFStar] Step 34 finished
+DEBUG   [simulation.py]: [DFStar] Step 35 finished
+DEBUG   [simulation.py]: [DFStar] Step 36 finished
+DEBUG   [simulation.py]: [DFStar] Step 37 finished
+DEBUG   [simulation.py]: [DFStar] Step 38 finished
+DEBUG   [simulation.py]: [DFStar] Step 39 finished
+DEBUG   [simulation.py]: [DFStar] Step 40 finished
+DEBUG   [simulation.py]: [DFStar] Step 41 finished
+DEBUG   [simulation.py]: [DFStar] Step 42 finished
+DEBUG   [simulation.py]: [DFStar] Step 43 finished
+DEBUG   [simulation.py]: [DFStar] Step 44 finished
+DEBUG   [simulation.py]: [DFStar] Step 45 finished
+DEBUG   [simulation.py]: [DFStar] Step 46 finished
+DEBUG   [simulation.py]: [DFStar] Step 47 finished
+DEBUG   [simulation.py]: [DFStar] Step 48 finished
+DEBUG   [simulation.py]: [DFStar] Step 49 finished
+DEBUG   [simulation.py]: [DFStar] Step 50 finished
+DEBUG   [simulation.py]: [DFStar] Step 51 finished
+DEBUG   [simulation.py]: [DFStar] Step 52 finished
+DEBUG   [simulation.py]: [DFStar] Step 53 finished
+DEBUG   [simulation.py]: [DFStar] Step 54 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_unique3 (__main__.DFTestRunner) ... DEBUG   [simulation.py]: Simulation 0x7fd3e1e9dd88 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Step 23 finished
+DEBUG   [simulation.py]: [DFStar] Step 24 finished
+DEBUG   [simulation.py]: [DFStar] Step 25 finished
+DEBUG   [simulation.py]: [DFStar] Step 26 finished
+DEBUG   [simulation.py]: [DFStar] Step 27 finished
+DEBUG   [simulation.py]: [DFStar] Step 28 finished
+DEBUG   [simulation.py]: [DFStar] Step 29 finished
+DEBUG   [simulation.py]: [DFStar] Step 30 finished
+DEBUG   [simulation.py]: [DFStar] Step 31 finished
+DEBUG   [simulation.py]: [DFStar] Step 32 finished
+DEBUG   [simulation.py]: [DFStar] Step 33 finished
+DEBUG   [simulation.py]: [DFStar] Step 34 finished
+DEBUG   [simulation.py]: [DFStar] Step 35 finished
+DEBUG   [simulation.py]: [DFStar] Step 36 finished
+DEBUG   [simulation.py]: [DFStar] Step 37 finished
+DEBUG   [simulation.py]: [DFStar] Step 38 finished
+DEBUG   [simulation.py]: [DFStar] Step 39 finished
+DEBUG   [simulation.py]: [DFStar] Step 40 finished
+DEBUG   [simulation.py]: [DFStar] Step 41 finished
+DEBUG   [simulation.py]: [DFStar] Step 42 finished
+DEBUG   [simulation.py]: [DFStar] Step 43 finished
+DEBUG   [simulation.py]: [DFStar] Step 44 finished
+DEBUG   [simulation.py]: [DFStar] Step 45 finished
+DEBUG   [simulation.py]: [DFStar] Step 46 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_random1 (__main__.DFTestRunner) ... DEBUG   [simulation.py]: Simulation 0x7fd3d4208908 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_random2 (__main__.DFTestRunner) ... DEBUG   [simulation.py]: Simulation 0x7fd3d4216248 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Step 23 finished
+DEBUG   [simulation.py]: [DFStar] Step 24 finished
+DEBUG   [simulation.py]: [DFStar] Step 25 finished
+DEBUG   [simulation.py]: [DFStar] Step 26 finished
+DEBUG   [simulation.py]: [DFStar] Step 27 finished
+DEBUG   [simulation.py]: [DFStar] Step 28 finished
+DEBUG   [simulation.py]: [DFStar] Step 29 finished
+DEBUG   [simulation.py]: [DFStar] Step 30 finished
+DEBUG   [simulation.py]: [DFStar] Step 31 finished
+DEBUG   [simulation.py]: [DFStar] Step 32 finished
+DEBUG   [simulation.py]: [DFStar] Step 33 finished
+DEBUG   [simulation.py]: [DFStar] Step 34 finished
+DEBUG   [simulation.py]: [DFStar] Step 35 finished
+DEBUG   [simulation.py]: [DFStar] Step 36 finished
+DEBUG   [simulation.py]: [DFStar] Step 37 finished
+DEBUG   [simulation.py]: [DFStar] Step 38 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_random3 (__main__.DFTestRunner) ... DEBUG   [simulation.py]: Simulation 0x7fd3d4216c68 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Step 23 finished
+DEBUG   [simulation.py]: [DFStar] Step 24 finished
+DEBUG   [simulation.py]: [DFStar] Step 25 finished
+DEBUG   [simulation.py]: [DFStar] Step 26 finished
+DEBUG   [simulation.py]: [DFStar] Step 27 finished
+DEBUG   [simulation.py]: [DFStar] Step 28 finished
+DEBUG   [simulation.py]: [DFStar] Step 29 finished
+DEBUG   [simulation.py]: [DFStar] Step 30 finished
+DEBUG   [simulation.py]: [DFStar] Step 31 finished
+DEBUG   [simulation.py]: [DFStar] Step 32 finished
+DEBUG   [simulation.py]: [DFStar] Step 33 finished
+DEBUG   [simulation.py]: [DFStar] Step 34 finished
+DEBUG   [simulation.py]: [DFStar] Step 35 finished
+DEBUG   [simulation.py]: [DFStar] Step 36 finished
+DEBUG   [simulation.py]: [DFStar] Step 37 finished
+DEBUG   [simulation.py]: [DFStar] Step 38 finished
+DEBUG   [simulation.py]: [DFStar] Step 39 finished
+DEBUG   [simulation.py]: [DFStar] Step 40 finished
+DEBUG   [simulation.py]: [DFStar] Step 41 finished
+DEBUG   [simulation.py]: [DFStar] Step 42 finished
+DEBUG   [simulation.py]: [DFStar] Step 43 finished
+DEBUG   [simulation.py]: [DFStar] Step 44 finished
+DEBUG   [simulation.py]: [DFStar] Step 45 finished
+DEBUG   [simulation.py]: [DFStar] Step 46 finished
+DEBUG   [simulation.py]: [DFStar] Step 47 finished
+DEBUG   [simulation.py]: [DFStar] Step 48 finished
+DEBUG   [simulation.py]: [DFStar] Step 49 finished
+DEBUG   [simulation.py]: [DFStar] Step 50 finished
+DEBUG   [simulation.py]: [DFStar] Step 51 finished
+DEBUG   [simulation.py]: [DFStar] Step 52 finished
+DEBUG   [simulation.py]: [DFStar] Step 53 finished
+DEBUG   [simulation.py]: [DFStar] Step 54 finished
+DEBUG   [simulation.py]: [DFStar] Step 55 finished
+DEBUG   [simulation.py]: [DFStar] Step 56 finished
+DEBUG   [simulation.py]: [DFStar] Step 57 finished
+DEBUG   [simulation.py]: [DFStar] Step 58 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+test_arch_random4 (__main__.DFTestRunner) ... DEBUG   [simulation.py]: Simulation 0x7fd3d4235128 created successfully.
+DEBUG   [simulation.py]: [DFStar] Step 1 finished
+DEBUG   [simulation.py]: [DFStar] Step 2 finished
+DEBUG   [simulation.py]: [DFStar] Step 3 finished
+DEBUG   [simulation.py]: [DFStar] Step 4 finished
+DEBUG   [simulation.py]: [DFStar] Step 5 finished
+DEBUG   [simulation.py]: [DFStar] Step 6 finished
+DEBUG   [simulation.py]: [DFStar] Step 7 finished
+DEBUG   [simulation.py]: [DFStar] Step 8 finished
+DEBUG   [simulation.py]: [DFStar] Step 9 finished
+DEBUG   [simulation.py]: [DFStar] Step 10 finished
+DEBUG   [simulation.py]: [DFStar] Step 11 finished
+DEBUG   [simulation.py]: [DFStar] Step 12 finished
+DEBUG   [simulation.py]: [DFStar] Step 13 finished
+DEBUG   [simulation.py]: [DFStar] Step 14 finished
+DEBUG   [simulation.py]: [DFStar] Step 15 finished
+DEBUG   [simulation.py]: [DFStar] Step 16 finished
+DEBUG   [simulation.py]: [DFStar] Step 17 finished
+DEBUG   [simulation.py]: [DFStar] Step 18 finished
+DEBUG   [simulation.py]: [DFStar] Step 19 finished
+DEBUG   [simulation.py]: [DFStar] Step 20 finished
+DEBUG   [simulation.py]: [DFStar] Step 21 finished
+DEBUG   [simulation.py]: [DFStar] Step 22 finished
+DEBUG   [simulation.py]: [DFStar] Step 23 finished
+DEBUG   [simulation.py]: [DFStar] Step 24 finished
+DEBUG   [simulation.py]: [DFStar] Step 25 finished
+DEBUG   [simulation.py]: [DFStar] Step 26 finished
+DEBUG   [simulation.py]: [DFStar] Step 27 finished
+DEBUG   [simulation.py]: [DFStar] Step 28 finished
+DEBUG   [simulation.py]: [DFStar] Step 29 finished
+DEBUG   [simulation.py]: [DFStar] Step 30 finished
+DEBUG   [simulation.py]: [DFStar] Step 31 finished
+DEBUG   [simulation.py]: [DFStar] Step 32 finished
+DEBUG   [simulation.py]: [DFStar] Step 33 finished
+DEBUG   [simulation.py]: [DFStar] Step 34 finished
+DEBUG   [simulation.py]: [DFStar] Step 35 finished
+DEBUG   [simulation.py]: [DFStar] Step 36 finished
+DEBUG   [simulation.py]: [DFStar] Step 37 finished
+DEBUG   [simulation.py]: [DFStar] Step 38 finished
+DEBUG   [simulation.py]: [DFStar] Step 39 finished
+DEBUG   [simulation.py]: [DFStar] Step 40 finished
+DEBUG   [simulation.py]: [DFStar] Step 41 finished
+DEBUG   [simulation.py]: [DFStar] Step 42 finished
+DEBUG   [simulation.py]: [DFStar] Step 43 finished
+DEBUG   [simulation.py]: [DFStar] Step 44 finished
+DEBUG   [simulation.py]: [DFStar] Step 45 finished
+DEBUG   [simulation.py]: [DFStar] Step 46 finished
+DEBUG   [simulation.py]: [DFStar] Step 47 finished
+DEBUG   [simulation.py]: [DFStar] Step 48 finished
+DEBUG   [simulation.py]: [DFStar] Step 49 finished
+DEBUG   [simulation.py]: [DFStar] Step 50 finished
+DEBUG   [simulation.py]: [DFStar] Step 51 finished
+DEBUG   [simulation.py]: [DFStar] Step 52 finished
+DEBUG   [simulation.py]: [DFStar] Step 53 finished
+DEBUG   [simulation.py]: [DFStar] Step 54 finished
+DEBUG   [simulation.py]: [DFStar] Step 55 finished
+DEBUG   [simulation.py]: [DFStar] Step 56 finished
+DEBUG   [simulation.py]: [DFStar] Step 57 finished
+DEBUG   [simulation.py]: [DFStar] Step 58 finished
+DEBUG   [simulation.py]: [DFStar] Step 59 finished
+DEBUG   [simulation.py]: [DFStar] Step 60 finished
+DEBUG   [simulation.py]: [DFStar] Step 61 finished
+DEBUG   [simulation.py]: [DFStar] Step 62 finished
+DEBUG   [simulation.py]: [DFStar] Step 63 finished
+DEBUG   [simulation.py]: [DFStar] Step 64 finished
+DEBUG   [simulation.py]: [DFStar] Step 65 finished
+DEBUG   [simulation.py]: [DFStar] Step 66 finished
+DEBUG   [simulation.py]: [DFStar] Step 67 finished
+DEBUG   [simulation.py]: [DFStar] Step 68 finished
+DEBUG   [simulation.py]: [DFStar] Step 69 finished
+DEBUG   [simulation.py]: [DFStar] Step 70 finished
+DEBUG   [simulation.py]: [DFStar] Step 71 finished
+DEBUG   [simulation.py]: [DFStar] Step 72 finished
+DEBUG   [simulation.py]: [DFStar] Step 73 finished
+DEBUG   [simulation.py]: [DFStar] Step 74 finished
+DEBUG   [simulation.py]: [DFStar] Step 75 finished
+DEBUG   [simulation.py]: [DFStar] Step 76 finished
+DEBUG   [simulation.py]: [DFStar] Step 77 finished
+DEBUG   [simulation.py]: [DFStar] Step 78 finished
+DEBUG   [simulation.py]: [DFStar] Algorithm finished
+INFO    [simulation.py]: Simulation has finished. There are no algorithms left to run. To run it from the start use sim.reset().
+ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.334s
+
+OK
