@@ -261,7 +261,8 @@ class DFStar(NodeAlgorithm):
 
     def first_visit(self, node, message):
         node.memory['entry'] = message.source
-        node.memory['unvisited_nodes'].remove(message.source)
+        if message.source in node.memory['unvisited_nodes']:
+            node.memory['unvisited_nodes'].remove(message.source)
 
         if node.memory['unvisited_nodes']:
             node.memory['next_node'] = node.memory['unvisited_nodes'].pop()
