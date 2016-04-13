@@ -121,7 +121,8 @@ class DFp(NodeAlgorithm):
                 next_node = node.memory['unvisited_nodes'].pop()
                 node.send(Message(destination=next_node, header='Token', data=message.data))
             else:
-                node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
+                if 'entry' in node.memory:
+                    node.send(Message(destination=node.memory['entry'], header='Return', data=message.data))
                 node.status = 'DONE'
         elif message.header == 'Visited':
             node.send(Message(destination=message.source, header='NAck', data=message.data))
