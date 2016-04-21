@@ -1,6 +1,7 @@
-#import sys
-#import traceback
+import sys
+import traceback
 import unittest
+import pdb
 
 from pymote.algorithms import traversal
 from pymote.networkgenerator import NetworkGenerator
@@ -107,6 +108,7 @@ class DFTestRunner(unittest.TestCase):
     def __init__(self, testname, algorithm):
         super(DFTestRunner, self).__init__(testname)
         self.algorithm = algorithm
+        self.test_name = testname
 
     def test_line(self):
         self.net = NetArch.get_line()
@@ -145,16 +147,17 @@ class DFTestRunner(unittest.TestCase):
         self.sim = Simulation(self.net)
         try:
             self.sim.run()
-        except Exception:
-            pass
-            # write_pickle(net, 'net_exception.npc.gz')
-            # import pdb;
-            # pdb.set_trace()
-            # traceback.print_exc(file=sys.stdout)
-            # raise e
+        except Exception, e:
+            write_pickle(self.net, "{}_{}_exception.npc.gz".format(self.algorithm.__class__.__name__, self.test_name))
+            pdb.set_trace()
+            traceback.print_exc(file=sys.stdout)
+            raise e
         for node in self.net.nodes():
-            self.assertEqual(node.status, 'DONE')
-            self.assertEqual(len(node.memory['unvisited_nodes']), 0)
+            try:
+                self.assertEqual(node.status, 'DONE')
+                self.assertEqual(len(node.memory['unvisited_nodes']), 0)
+            except AssertionError:
+                write_pickle(self.net, "{}_{}_asserterror.npc.gz".format(self.algorithm.__class__.__name__, self.test_name))
 
 
 def form_suite(algorithm):
