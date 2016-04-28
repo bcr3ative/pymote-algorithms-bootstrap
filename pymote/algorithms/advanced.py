@@ -2,87 +2,140 @@ from pymote.algorithm import NodeAlgorithm
 from pymote.message import Message
 
 
-class Eccentricities(NodeAlgorithm):
-    # algorithm input
-    required_params = ()
-    # values that are exposed to other algorithms
+class Saturation(NodeAlgorithm):
+    """
+    Author: Iva Petrovic (swimR)
+    """
+    required_params = {}
     default_params = {'neighborsKey': 'Neighbors'}
 
     def initializer(self):
         for node in self.network.nodes():
             node.memory[self.neighborsKey] = node.compositeSensor.read()['Neighbors']
             node.status = 'AVAILABLE'
-        # make first node initiator
         ini_node = self.network.nodes()[0]
-        ini_node.status = 'INITIATOR'
         self.network.outbox.insert(0, Message(header=NodeAlgorithm.INI, destination=ini_node))
 
-    def initiator(self, node, message):
-        node.send(Message(header='Activate', data=message.data))
-        self.initialize(node)
-        node.memory['neighbors'] = list(node.memory[self.neighborsKey])
-        if len(node.memory['neighbors']) == 1:
-            msg = self.prepare_message(node)
-            parent = node.memory['neighbors'].pop()
-            node.send(Message(destination=parent, header='M', data=msg))
-            node.status = 'PROCESSING'
-        else:
-            node.status = 'ACTIVE'
-
     def available(self, node, message):
-        if message.header == 'Activate':
-            for i in node.memory[self.neighborsKey]:
-                if i is not message.source:
-                    node.send(Message(destination=i, header='Activate', data=message.data))
-            self.initialize(node)
-            node.memory['neighbors'] = list(node.memory[self.neighborsKey])
-            if len(node.memory['neighbors']) == 1:
-                msg = self.prepare_message(node)
-                parent = node.memory['neighbors'].pop()
-                node.send(Message(destination=parent, header='M', data=msg))
-                node.status = 'PROCESSING'
-            else:
-                node.status = 'ACTIVE'
+        node_neighbors = list(node.memory[self.neighborsKey])
+
+        if message.header == NodeAlgorithm.INI:
+            self.send_message(node, message, node_neighbors)
+        elif message.header == 'Activate':
+            node_neighbors.remove(message.source)
+            self.send_message(node, message, node_neighbors)
 
     def active(self, node, message):
-        if message.header == 'M':
+        if message.header == 'Message':
             self.process_message(node, message)
             node.memory['neighbors'].remove(message.source)
+
             if len(node.memory['neighbors']) == 1:
-                msg = self.prepare_message()
-                parent = node.memory['neighbors'].pop()
-                node.send(Message(destination=parent, header='M', data=msg))
+                self.prepare_message(node, message)
+                node.memory['parent'] = node.memory['neighbors'].pop()
+                node.send(Message(destination=node.memory['parent'], header='Message', data=message.data))
                 node.status = 'PROCESSING'
 
     def processing(self, node, message):
-        if message.header == 'Resolution':
+        if message.header == 'Message':
+            self.process_message(node, message)
             self.resolve(node, message)
 
     def saturated(self, node, message):
         pass
 
-    def initialize(self, node):
+    def initialize(self, node, message):
+        raise NotImplementedError
+
+    def prepare_message(self, node, message):
+        m = ['Saturation']
+
+    def process_message(self, node, message):
+        raise NotImplementedError
+
+    def send_message(self, node, message, node_neighbors):
+        for i in node_neighbors:
+            node.send(Message(destination=i, header='Activate', data=message.data))
+
+        self.initialize(node, message)
+
+        node.memory['neighbors'] = list(node.memory[self.neighborsKey])
+        if len(node.memory['neighbors']) == 1:
+            self.prepare_message(node, message)
+            node.memory['parent'] = node.memory['neighbors'].pop()
+            node.send(Message(destination=node.memory['parent'], header='Message', data=message.data))
+            node.status = 'PROCESSING'
+        else:
+            node.status = 'ACTIVE'
+
+    def resolve(self, node, message):
+        node.status = 'SATURATED'
+
+    STATUS = {
+                'AVAILABLE': available,
+                'ACTIVE': active,
+                'PROCESSING': processing,
+                'SATURATED': saturated
+             }
+
+
+class Eccentricities(Saturation):
+    # algorithm input
+    required_params = ()
+    # values that are exposed to other algorithms
+    default_params = {'neighborsKey': 'Neighbors'}
+
+    def processing(self, node, message):
+        if message.header == 'Message':
+            self.resolve(node, message)
+
+    def done(self, node, message):
+        pass
+
+    def initialize(self, node, message):
         node.memory['distance'] = {}
         for i in node.memory[self.neighborsKey]:
             node.memory['distance'][id(i)] = 0
 
-    def prepare_message(self, node):
-        maxdist = 1 + max(list(node.memory['distance'].values()))
-        return {'type': 'Saturation', 'maxdist': maxdist}
-
-    def process_message(self, node, message):
-        node.memory['distance'][id(message.source)] = message.data['maxdist']
+    def prepare_message(self, node, message):
+        return 1 + max(list(node.memory['distance'].values()))
 
     def resolve(self, node, message):
-        pass
+        self.process_message(node, message)
+        self.calculate_eccentricity(node)
+        for i in list(node.memory[self.neighborsKey]):
+            if i is not node.memory['parent']:
+                distances = dict(node.memory['distance'])
+                distances.pop(id(i), None)
+                max_dist = 1 + max(list(distances.values()))
+                node.send(Message(destination=i, header='Message', data=max_dist))
+        node.status = 'DONE'
+
+    def process_message(self, node, message):
+        node.memory['distance'][id(message.source)] = message.data
 
     def calculate_eccentricity(self, node):
-        ecc = max(list(node.memory['distance'].values()))
+        node.memory['eccentricity'] = max(list(node.memory['distance'].values()))
+
+    def send_message(self, node, message, node_neighbors):
+        for i in node_neighbors:
+            node.send(Message(destination=i, header='Activate', data=message.data))
+
+        self.initialize(node, message)
+
+        node.memory['neighbors'] = list(node.memory[self.neighborsKey])
+        if len(node.memory['neighbors']) == 1:
+            dist = self.prepare_message(node, message)
+            node.memory['parent'] = node.memory['neighbors'].pop()
+            node.send(Message(destination=node.memory['parent'], header='Message', data=dist))
+            node.status = 'PROCESSING'
+        else:
+            node.status = 'ACTIVE'
 
     STATUS = {
-        'INITIATOR': initiator,
-        'AVAILABLE': available,
-        'ACTIVE': active,
+        'AVAILABLE': Saturation.STATUS.get('AVAILABLE'),
+        'ACTIVE': Saturation.STATUS.get('ACTIVE'),
         'PROCESSING': processing,
-        'SATURATED': saturated
+        'SATURATED': Saturation.STATUS.get('SATURATED'),
+        'DONE': done
     }
