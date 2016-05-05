@@ -31,9 +31,9 @@ class Saturation(NodeAlgorithm):
             node.memory['neighbors'].remove(message.source)
 
             if len(node.memory['neighbors']) == 1:
-                self.prepare_message(node, message)
+                dist = self.prepare_message(node, message)
                 node.memory['parent'] = node.memory['neighbors'].pop()
-                node.send(Message(destination=node.memory['parent'], header='Message', data=message.data))
+                node.send(Message(destination=node.memory['parent'], header='Message', data=dist))
                 node.status = 'PROCESSING'
 
     def processing(self, node, message):
@@ -86,7 +86,8 @@ class Eccentricities(Saturation):
     default_params = {'neighborsKey': 'Neighbors'}
 
     def processing(self, node, message):
-        if message.header == 'Message':
+        super(Eccentricities, self).processing(node, message)
+        if message.header == 'Resolution':
             self.resolve(node, message)
 
     def done(self, node, message):
@@ -95,7 +96,7 @@ class Eccentricities(Saturation):
     def initialize(self, node, message):
         node.memory['distance'] = {}
         for i in node.memory[self.neighborsKey]:
-            node.memory['distance'][id(i)] = 0
+            node.memory['distance'][i] = 0
 
     def prepare_message(self, node, message):
         return 1 + max(list(node.memory['distance'].values()))
@@ -106,13 +107,13 @@ class Eccentricities(Saturation):
         for i in list(node.memory[self.neighborsKey]):
             if i is not node.memory['parent']:
                 distances = dict(node.memory['distance'])
-                distances.pop(id(i), None)
+                distances.pop(i, None)
                 max_dist = 1 + max(list(distances.values()))
-                node.send(Message(destination=i, header='Message', data=max_dist))
+                node.send(Message(destination=i, header='Resolution', data=max_dist))
         node.status = 'DONE'
 
     def process_message(self, node, message):
-        node.memory['distance'][id(message.source)] = message.data
+        node.memory['distance'][message.source] = message.data
 
     def calculate_eccentricity(self, node):
         node.memory['eccentricity'] = max(list(node.memory['distance'].values()))
